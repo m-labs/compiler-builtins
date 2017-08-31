@@ -19,7 +19,7 @@ trait Ashl: Int + LargeInt {
 }
 
 impl Ashl for u64 {}
-impl Ashl for u128 {}
+// impl Ashl for u128 {}
 
 trait Ashr: Int + LargeInt {
     /// Returns arithmetic `a >> b`, requires `b < $ty::bits()`
@@ -41,7 +41,7 @@ trait Ashr: Int + LargeInt {
 }
 
 impl Ashr for i64 {}
-impl Ashr for i128 {}
+// impl Ashr for i128 {}
 
 trait Lshr: Int + LargeInt {
     /// Returns logical `a >> b`, requires `b < $ty::bits()`
@@ -62,7 +62,7 @@ trait Lshr: Int + LargeInt {
 }
 
 impl Lshr for u64 {}
-impl Lshr for u128 {}
+// impl Lshr for u128 {}
 
 intrinsics! {
     #[use_c_shim_if(all(target_arch = "x86", not(target_env = "msvc")))]
@@ -71,9 +71,9 @@ intrinsics! {
         a.ashl(b)
     }
 
-    pub extern "C" fn __ashlti3(a: u128, b: u32) -> u128 {
-        a.ashl(b)
-    }
+    // pub extern "C" fn __ashlti3(a: u128, b: u32) -> u128 {
+    //     a.ashl(b)
+    // }
 
     #[use_c_shim_if(all(target_arch = "x86", not(target_env = "msvc")))]
     #[arm_aeabi_alias = __aeabi_lasr]
@@ -81,9 +81,9 @@ intrinsics! {
         a.ashr(b)
     }
 
-    pub extern "C" fn __ashrti3(a: i128, b: u32) -> i128 {
-        a.ashr(b)
-    }
+    // pub extern "C" fn __ashrti3(a: i128, b: u32) -> i128 {
+    //     a.ashr(b)
+    // }
 
     #[use_c_shim_if(all(target_arch = "x86", not(target_env = "msvc")))]
     #[arm_aeabi_alias = __aeabi_llsr]
@@ -91,7 +91,7 @@ intrinsics! {
         a.lshr(b)
     }
 
-    pub extern "C" fn __lshrti3(a: u128, b: u32) -> u128 {
-        a.lshr(b)
-    }
+    // pub extern "C" fn __lshrti3(a: u128, b: u32) -> u128 {
+    //     a.lshr(b)
+    // }
 }

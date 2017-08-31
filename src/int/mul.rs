@@ -26,7 +26,7 @@ trait Mul: LargeInt {
 }
 
 impl Mul for u64 {}
-impl Mul for i128 {}
+// impl Mul for i128 {}
 
 trait Mulo: Int + ops::Neg<Output = Self> {
     fn mulo(self, other: Self, overflow: &mut i32) -> Self {
@@ -68,7 +68,7 @@ trait Mulo: Int + ops::Neg<Output = Self> {
 
 impl Mulo for i32 {}
 impl Mulo for i64 {}
-impl Mulo for i128 {}
+// impl Mulo for i128 {}
 
 intrinsics! {
     #[use_c_shim_if(all(target_arch = "x86", not(target_env = "msvc")))]
@@ -77,10 +77,10 @@ intrinsics! {
         a.mul(b)
     }
 
-    #[aapcs_on_arm]
-    pub extern "C" fn __multi3(a: i128, b: i128) -> i128 {
-        a.mul(b)
-    }
+    // #[aapcs_on_arm]
+    // pub extern "C" fn __multi3(a: i128, b: i128) -> i128 {
+    //     a.mul(b)
+    // }
 
     pub extern "C" fn __mulosi4(a: i32, b: i32, oflow: &mut i32) -> i32 {
         a.mulo(b, oflow)
@@ -90,8 +90,8 @@ intrinsics! {
         a.mulo(b, oflow)
     }
 
-    #[unadjusted_on_win64]
-    pub extern "C" fn __muloti4(a: i128, b: i128, oflow: &mut i32) -> i128 {
-        a.mulo(b, oflow)
-    }
+    // #[unadjusted_on_win64]
+    // pub extern "C" fn __muloti4(a: i128, b: i128, oflow: &mut i32) -> i128 {
+    //     a.mulo(b, oflow)
+    // }
 }

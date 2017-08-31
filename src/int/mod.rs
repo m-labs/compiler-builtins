@@ -201,7 +201,7 @@ macro_rules! int_impl {
 
 int_impl!(i32, u32, 32);
 int_impl!(i64, u64, 64);
-int_impl!(i128, u128, 128);
+// int_impl!(i128, u128, 128);
 
 /// Trait to convert an integer to/from smaller parts
 pub trait LargeInt: Int {
@@ -242,5 +242,5 @@ macro_rules! large_int {
 
 large_int!(u64, u32, u32, 32);
 large_int!(i64, u32, i32, 32);
-large_int!(u128, u64, u64, 64);
-large_int!(i128, u64, i64, 64);
+// large_int!(u128, u64, u64, 64);
+// large_int!(i128, u64, i64, 64);
